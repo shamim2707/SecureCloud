@@ -59,7 +59,8 @@ const UserDashboard = () => {
         const loadingToast = toast.loading('Decrypting and downloading...');
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/files/${fileId}/download`, {
+            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+            const response = await fetch(`${apiUrl}/files/${fileId}/download`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
